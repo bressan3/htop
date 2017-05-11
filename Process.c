@@ -458,7 +458,7 @@ void Process_writeField(Process* this, RichString* str, ProcessField field) {
    case TTY_NR: snprintf(buffer, n, "%3u:%3u ", major(this->tty_nr), minor(this->tty_nr)); break;
    case USER: {
       if (Process_getuid != (int) this->st_uid)
-         attr = CRT_colors[PROCESS_SHADOW];
+         attr = CRT_colors[PROCESS_TAG]; // Changed it to yellow so it looks better on OSX's dark terminal
       if (this->user) {
          snprintf(buffer, n, "%-9s ", this->user);
       } else {
