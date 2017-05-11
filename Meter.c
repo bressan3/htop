@@ -324,7 +324,11 @@ static void BarMeterMode_draw(Meter* this, int x, int y, int w) {
    }
    if (offset < w) {
       // Changed the CPU / Mem / Swp percentage values to Yellow so it looks better on OSX's dark terminal
+      #ifdef __APPLE__
       attrset(CRT_colors[PROCESS_TAG]);
+      #else
+      attrset(CRT_colors[BAR_SHADOW]);
+      #endif
       mvaddnstr(y, x + offset, bar + offset, w - offset);
    }
 
